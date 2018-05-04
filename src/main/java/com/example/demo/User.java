@@ -5,27 +5,12 @@ public class User {
     private String password;
     private String email;
     private int phoneNr;
-    private String firstName;
-    private String lastName;
-    private String city;
-    private String experience;
-    private String education;
 
-    //mentor and student constructor
-    public User(String username, String password, String email, int phoneNr, String firstName, String lastName, String city, String experience, String education) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phoneNr = phoneNr;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.city = city;
-        this.experience = experience;
-        this.education = education;
+
+    public User(){
     }
 
-    //admin constructor
-    public User(String username, String password, String email, int phoneNr) {
+    public User(String username, String password, String email, int phoneNr, String firstName, String lastName, String city, String experience, String education) {
         this.username = username;
         this.password = password;
         this.email = email;

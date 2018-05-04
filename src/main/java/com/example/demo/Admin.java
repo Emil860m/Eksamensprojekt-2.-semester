@@ -1,4 +1,5 @@
 package com.example.demo;
 
-public class Admin {
+public class Admin extends User {
+
 }
