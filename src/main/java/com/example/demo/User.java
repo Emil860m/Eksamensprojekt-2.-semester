@@ -1,36 +1,20 @@
 package com.example.demo;
 
 public class User {
-    private String username;
+    private String email; // primary key
+    private String firstName;
+    private String lastName;
     private String password;
-    private String email;
-    private int phoneNr;
+    private int phoneNr; // foreign key
 
 
     public User(){
     }
 
-    public User(String username, String password, String email, int phoneNr, String firstName, String lastName, String city, String experience, String education) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phoneNr = phoneNr;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public User(String password, String email, int phoneNr, String firstName, String lastName, String city, String experience, String education) {
+        this.password = password;                   // Slettet username da vi bare bruger mail der
+        this.email = email;                         // Tilføjet fornavn og efternavn her da de går igen i alle klasser
+        this.phoneNr = phoneNr;                     // Og derfor bare kan nedarves
     }
 
     public String getEmail() {
@@ -39,6 +23,30 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getPhoneNr() {
