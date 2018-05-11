@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 public class HomeController {
 }
 
@@ -30,4 +35,19 @@ public class HomeController {
 
 
 
+
  */
+    @PostMapping("/createStudent")
+    public String createStudent(@ModelAttribute Student student){
+        Utility u = Utility.getInstance();
+        u.createConnection();
+        u.createStudent()
+
+    }
+
+    @GetMapping("/createStudent")
+    public String createStudent(Model model){
+        model.addAttribute("Student", new Student());
+        return "OpretStud";
+
+    }
