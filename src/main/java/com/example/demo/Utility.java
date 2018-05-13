@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import exam.ps.dbConn;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,47 +24,38 @@ public class Utility {
     }
 
     public static void connectDatabase() throws SQLException, ClassNotFoundException {
-        try {
 
-            //***  Establishing the connection
-            con = null;
-            Statement s = null;
-            Class.forName (JDBC_DRIVER);
+        //***  Establishing the connection
+        con = dbConn.getInstance().createConnection();
+        Statement s = null;
+        //Class.forName (JDBC_DRIVER);
 
-            // in the url we have to tell which account and password to use
-            con =  DriverManager.getConnection(DATABASE_URL,"root","yzt42rmt");
+        // in the url we have to tell which account and password to use
+        //con =  DriverManager.getConnection("jdbc:google:rdbms://fiery-nimbus-203407:europe-west1:myinstance/ap");
 
-            //*** now that the connection is established we do the query
-            s = con.createStatement();
+        //*** now that the connection is established we do the query
+        s = con.createStatement();
 
-            ResultSet rs = s.executeQuery("SELECT email FROM Users");
-
-            // if the resultset is not empty, we position to first row and display first field
-            if (rs != null)
-                while (rs.next()) {
+        ResultSet rs = s.executeQuery("SELECT email FROM ap.Users");
+        while(rs.next()) {
+            System.out.println(rs.getString(1));
+        }
+        // if the resultset is not empty, we position to first row and display first field
+           // if (rs != null)
+             //   while (rs.next()) {
                     //System.out.println("Data from name: " + rs.getString("vendor_name") +
                     //      "        " + rs.getString("vendor_city"));
-                    System.out.printf("Data from name: %-34s ",rs.getString("Users"));
-                    System.out.printf("%s\n ",rs.getString("email"));
-                }
-            s.close();
-            con.close();
-        }
-        //correct errorhandling takes up a lot of space
-        catch (SQLException sqlex) {
-            try{
-                System.out.println(sqlex.getMessage());
-                con.close();
-                System.exit(1);  // terminate program
-            }
-            catch(SQLException sql){}
-        }
-        catch (ClassNotFoundException noClass) {
+               //     System.out.printf("Data from name: %-34s ",rs.getString("Users"));
+                 //   System.out.printf("%s\n ",rs.getString("email"));
+               // }
+            //s.close();
+            //con.close();
+        /*catch (ClassNotFoundException noClass) {
             System.err.println("Driver Class not found");
             System.out.println(noClass.getMessage());
             System.exit(1);  // terminate program
 
-        }
+        }*/
 
     }
 

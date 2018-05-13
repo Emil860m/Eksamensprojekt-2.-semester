@@ -37,7 +37,8 @@ public class HomeController {
 
 
  */
-    @PostMapping("/createStudent")
+/*
+@PostMapping("/createStudent")
     public String createStudent(@ModelAttribute Student student){
         Utility u = Utility.getInstance();
         u.createConnection();
@@ -51,3 +52,4 @@ public class HomeController {
         return "OpretStud";
 
     }
+*/
