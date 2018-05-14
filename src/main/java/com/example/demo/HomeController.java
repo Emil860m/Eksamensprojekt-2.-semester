@@ -5,8 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLException;
+
+
+
 public class HomeController {
-}
+
 
 /*  Tilføjer bare skelettet til Menu forsiden for både Mentor og Student
     @GetMapping("/createTime")  - KUN MENTOR
@@ -37,19 +41,24 @@ public class HomeController {
 
 
  */
-/*
+@GetMapping("/")
+    public String index() {
+
+        return "index";
+    }
+@GetMapping("/createStudent")
+public String createStudent(Model model){
+    model.addAttribute("Student", new Student());
+    return "createStudent";
+
+}
+
 @PostMapping("/createStudent")
-    public String createStudent(@ModelAttribute Student student){
-        Utility u = Utility.getInstance();
-        u.createConnection();
-        u.createStudent()
-
+    public String createStudent(@ModelAttribute Student student) throws SQLException {
+        Utility.saveUser(student);
+    return "redirect:/";
     }
 
-    @GetMapping("/createStudent")
-    public String createStudent(Model model){
-        model.addAttribute("Student", new Student());
-        return "OpretStud";
 
-    }
-*/
+
+}

@@ -70,10 +70,10 @@ public class Utility {
         Statement s = null;
         s = con.createStatement();
         if (user instanceof Student) {
-
+            System.out.print("Student created");
         }
         if (user instanceof Mentor) {
-
+            System.out.print("Mentor created");
         }
 
     }

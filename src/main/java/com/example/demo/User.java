@@ -1,17 +1,17 @@
 package com.example.demo;
 
 public class User {
-    private String email; // primary key
-    private String firstName;
-    private String lastName;
-    private String password;
-    private int phoneNr; // foreign key
+    protected String email; // primary key
+    protected String firstName;
+    protected String lastName;
+    protected String password;
+    protected String phoneNr; // foreign key
 
 
     public User(){
     }
 
-    public User(String password, String email, int phoneNr, String firstName, String lastName, String city, String experience, String education) {
+    public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String experience, String education) {
         this.password = password;                   // Slettet username da vi bare bruger mail der
         this.email = email;                         // Tilføjet fornavn og efternavn her da de går igen i alle klasser
         this.phoneNr = phoneNr;                     // Og derfor bare kan nedarves
@@ -49,11 +49,11 @@ public class User {
         this.password = password;
     }
 
-    public int getPhoneNr() {
+    public String getPhoneNr() {
         return phoneNr;
     }
 
-    public void setPhoneNr(int phoneNr) {
+    public void setPhoneNr(String phoneNr) {
         this.phoneNr = phoneNr;
     }
 
