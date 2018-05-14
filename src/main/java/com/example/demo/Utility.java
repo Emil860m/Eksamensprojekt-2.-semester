@@ -38,8 +38,6 @@ public class Utility {
         while(rs.next()) {
             System.out.println(rs.getString(1));
         }
-      
-
     }
 
 
@@ -48,7 +46,6 @@ public class Utility {
     //metoden skal rettes til så den tilgår databasen og skal derefter returnere selve objektet
     /*
     private static User login(String username, String password) {
-        Scanner input = new Scanner(System.in);
 
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getUsername())== username.toLowerCase() && users.get(i).getPassword()==password.toLowerCase()) {
