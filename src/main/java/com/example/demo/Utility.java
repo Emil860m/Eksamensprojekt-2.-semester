@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Utility {
 
@@ -18,6 +19,8 @@ public class Utility {
     public static void main(String [] args) throws SQLException, ClassNotFoundException {
         try {
             connectDatabase();
+            String i = login("admin@email.com", "12345");
+            System.out.print(i);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -33,29 +36,47 @@ public class Utility {
         s = con.createStatement();
 
         //Opretter et resultset med de statements vi skal bruge
-        ResultSet rs = s.executeQuery("SELECT email FROM ap.Users");
+        ResultSet rs = s.executeQuery("SELECT email, password FROM ap.Users");
         //Printer resultsettet ud
         while(rs.next()) {
-            System.out.println(rs.getString(1));
+            System.out.println(rs.getString(1)+ rs.getString(2));
         }
     }
 
 
 
-    //metoden går ud fra at der er en arraylist der hedder users, med alle brugerne i.
-    //metoden skal rettes til så den tilgår databasen og skal derefter returnere selve objektet
-    /*
-    private static User login(String username, String password) {
 
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getUsername())== username.toLowerCase() && users.get(i).getPassword()==password.toLowerCase()) {
-                return users.get(i);
+
+    private static String login(String username, String password) throws SQLException {
+        con = dbConn.getInstance().createConnection();
+        Statement s = null;
+        s = con.createStatement();
+        ResultSet rs = s.executeQuery("SELECT email, password FROM ap.Users");
+
+        //System.out.println(rs.getString(1));
+        while(rs.next()){
+            System.out.println(rs.getString("email") + " " + rs.getString("password"));
+            if(username.toLowerCase().equals(rs.getString("email").toLowerCase()) && password.toLowerCase().equals(rs.getString("password").toLowerCase())){
+                return rs.getString("email").toLowerCase();
             }
         }
-
+        return "1";
     }
 
-*/
+
+
+    public static void saveUser(User user) throws SQLException {
+        con = dbConn.getInstance().createConnection();
+        Statement s = null;
+        s = con.createStatement();
+        if (user instanceof Student) {
+
+        }
+        if (user instanceof Mentor) {
+
+        }
+
+    }
 
 
 }
