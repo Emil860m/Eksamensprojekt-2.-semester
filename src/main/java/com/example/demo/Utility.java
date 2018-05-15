@@ -16,9 +16,7 @@ public class Utility {
 
     public static void main(String [] args) throws SQLException, ClassNotFoundException {
         try {
-            connectDatabase();
-            String i = login("admin@email.com", "12345");
-            System.out.print(i);
+            deleteUser("Mentor@email.com");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -106,13 +104,24 @@ public class Utility {
             stmt.setString(8,((Mentor) user).getExperience());
             stmt.setString(9,((Mentor) user).getSubject());
             stmt.executeUpdate();
-            //s.executeQuery("INSERT INTO Mentors VALUES (user.getPhoneNr(), user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName(),user.getCity(),user.getEducation(), user.getExperience(), user.getSubject())");
-            //s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Mentor)");
         }
 
     }
 
 
+
+    public static void deleteUser(String inputEmail) throws SQLException {
+        con = dbConn.getInstance().createConnection();
+        PreparedStatement stmtStudent=con.prepareStatement("DELETE FROM Students WHERE email = (?)");
+        stmtStudent.setString(1,inputEmail);
+        stmtStudent.executeUpdate();
+        PreparedStatement stmtMentor=con.prepareStatement("DELETE FROM Mentors WHERE email = (?)");
+        stmtMentor.setString(1,inputEmail);
+        stmtMentor.executeUpdate();
+        PreparedStatement stmtUser = con.prepareStatement("DELETE FROM Users WHERE email = (?)");
+        stmtUser.setString(1,inputEmail);
+        stmtUser.executeUpdate();
+    }
 }
 
 
