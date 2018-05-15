@@ -3,6 +3,7 @@ package com.example.demo;
 import exam.ps.dbConn;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -16,7 +17,7 @@ public class Utility {
 
     public static void main(String [] args) throws SQLException, ClassNotFoundException {
         try {
-            deleteUser("Mentor@email.com");
+            loadUserList();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -125,6 +126,20 @@ public class Utility {
 
     public static void editUser(User user) throws SQLException {
         con = dbConn.getInstance().createConnection();
+    }
+
+    public static ArrayList<User> loadUserList() throws SQLException {
+        ArrayList<User> uList = new ArrayList();
+        con = dbConn.getInstance().createConnection();
+        Statement s = con.createStatement();
+        ResultSet rs = s.executeQuery("SELECT fornavn, efternavn, email, Type, telefon FROM Users");
+        while(rs.next()){
+            uList.add(new User(rs.getString(3), rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(5)));
+        }
+        for(int i = 0; i < uList.size(); i++) {
+            System.out.println(uList.get(i).getEmail());
+        }
+        return uList;
     }
 }
 

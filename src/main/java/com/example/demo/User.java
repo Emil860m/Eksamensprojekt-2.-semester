@@ -8,9 +8,18 @@ public class User {
     protected String phoneNr; // foreign key
     protected String city;
     protected String education;
+    protected String type;
 
 
     public User(){
+    }
+
+    public User(String email, String firstName, String lastName, String type, String phoneNr) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.type = type;
+        this.phoneNr = phoneNr;
     }
 
     public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String experience, String education) {

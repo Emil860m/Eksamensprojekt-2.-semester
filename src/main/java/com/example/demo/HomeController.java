@@ -76,12 +76,12 @@ public class HomeController {
     }
 
     @GetMapping("/deleteUser")
-    public String deleteUser(@RequestParam (value = "email") String email){
+    public String deleteUser(@RequestParam (value = "email") String email) throws SQLException {
         Utility.deleteUser(email);
         return "userList";
     }
     @GetMapping("/userList")
-    public String userList(Model model){
+    public String userList(Model model) throws SQLException {
         ArrayList<User> uList = Utility.loadUserList();
         model.addAttribute("uList", uList);
         return "userList";
