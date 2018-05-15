@@ -2,12 +2,10 @@ package com.example.demo;
 
 import exam.ps.dbConn;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Scanner;
+
+
 
 public class Utility {
 
@@ -70,11 +68,26 @@ public class Utility {
         Statement s = null;
         s = con.createStatement();
         if (user instanceof Student) {
-            s.executeQuery("INSERT INTO Students VALUES (user.getEmail(), user.getPassword, user.getFirstName(), user.getCity(), user.getPhoneNr(), user.getEducation(), user.getLastName())");
-            s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Student)");
+            PreparedStatement stmtUser=con.prepareStatement("insert into Users values(?,?,?,?,?,?)");
+            stmtUser.setString(1,user.getEmail());//1 specifies the first parameter in the query
+            stmtUser.setString(4,user.getPassword());
+            stmtUser.setString(2,user.getFirstName());
+            stmtUser.setString(5,user.getPhoneNr());
+            stmtUser.setString(3,user.getLastName());
+            stmtUser.setString(6,"Student");
+            stmtUser.executeUpdate();
+            PreparedStatement stmt=con.prepareStatement("insert into Students values(?,?,?,?,?,?,?)");
+            stmt.setString(1,user.getEmail());//1 specifies the first parameter in the query
+            stmt.setString(2,user.getPassword());
+            stmt.setString(3,user.getFirstName());
+            stmt.setString(4,user.getCity());
+            stmt.setString(5,user.getPhoneNr());
+            stmt.setString(6,user.getEducation());
+            stmt.setString(7,user.getLastName());
+            stmt.executeUpdate();
         }
         if (user instanceof Mentor) {
-            s.executeQuery("");
+            s.executeQuery("INSERT INTO Mentors VALUES (user.getPhoneNr(), user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName(),user.getCity(),user.getEducation(), user.getExperience(), user.getSubject())");
             s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Mentor)");
         }
 
@@ -82,3 +95,6 @@ public class Utility {
 
 
 }
+
+
+

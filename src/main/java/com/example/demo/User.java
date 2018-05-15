@@ -6,6 +6,8 @@ public class User {
     protected String lastName;
     protected String password;
     protected String phoneNr; // foreign key
+    protected String city;
+    protected String education;
 
 
     public User(){
@@ -15,6 +17,22 @@ public class User {
         this.password = password;                   // Slettet username da vi bare bruger mail der
         this.email = email;                         // Tilføjet fornavn og efternavn her da de går igen i alle klasser
         this.phoneNr = phoneNr;                     // Og derfor bare kan nedarves
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
     }
 
     public String getEmail() {
