@@ -71,9 +71,11 @@ public class Utility {
         s = con.createStatement();
         if (user instanceof Student) {
             s.executeQuery("INSERT INTO Students VALUES (user.getEmail(), user.getPassword, user.getFirstName(), user.getCity(), user.getPhoneNr(), user.getEducation(), user.getLastName())");
+            s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Student)");
         }
         if (user instanceof Mentor) {
-            System.out.print("Mentor created");
+            s.executeQuery("");
+            s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Mentor)");
         }
 
     }
