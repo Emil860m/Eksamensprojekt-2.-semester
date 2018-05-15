@@ -70,7 +70,7 @@ public class Utility {
         Statement s = null;
         s = con.createStatement();
         if (user instanceof Student) {
-            System.out.print("Student created");
+            s.executeQuery("INSERT INTO Students VALUES (user.getEmail(), user.getPassword, user.getFirstName(), user.getCity(), user.getPhoneNr(), user.getEducation(), user.getLastName())");
         }
         if (user instanceof Mentor) {
             System.out.print("Mentor created");
