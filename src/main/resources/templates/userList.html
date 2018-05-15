@@ -30,11 +30,11 @@
         </tr>
         <tr th:each="uList: ${uList}">
             <td></td>
-            <td th:text="${uList.Navn}"/>
-            <td th:text="${uList.Telefonnummer}"/>
-            <td th:text="${uList.Medlemstype}"/>
-            <td th:text="${uList.Email}"/>
-            <td><a th:href="@{'/delete?email='+${uList.email}}">
+            <td th:text="${uList.firstName}"/>
+            <td th:text="${uList.phoneNr}"/>
+            <td th:text="${uList.type}"/>
+            <td th:text="${uList.email}"/>
+            <td><a th:href="@{'/deleteUser?email='+${uList.email}}">
                 <button onclick="return confirm('Er du sikker?')" class="btn-ed btn">Slet</button>
 
             </a>

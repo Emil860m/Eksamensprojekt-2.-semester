@@ -28,6 +28,14 @@ public class User {
         this.phoneNr = phoneNr;                     // Og derfor bare kan nedarves
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getCity() {
         return city;
     }

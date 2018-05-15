@@ -136,9 +136,6 @@ public class Utility {
         while(rs.next()){
             uList.add(new User(rs.getString(3), rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(5)));
         }
-        for(int i = 0; i < uList.size(); i++) {
-            System.out.println(uList.get(i).getEmail());
-        }
         return uList;
     }
 }
