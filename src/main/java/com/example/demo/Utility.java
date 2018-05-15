@@ -87,8 +87,27 @@ public class Utility {
             stmt.executeUpdate();
         }
         if (user instanceof Mentor) {
-            s.executeQuery("INSERT INTO Mentors VALUES (user.getPhoneNr(), user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName(),user.getCity(),user.getEducation(), user.getExperience(), user.getSubject())");
-            s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Mentor)");
+            PreparedStatement stmtUser=con.prepareStatement("insert into Users values(?,?,?,?,?,?)");
+            stmtUser.setString(1,user.getEmail());//1 specifies the first parameter in the query
+            stmtUser.setString(4,user.getPassword());
+            stmtUser.setString(2,user.getFirstName());
+            stmtUser.setString(5,user.getPhoneNr());
+            stmtUser.setString(3,user.getLastName());
+            stmtUser.setString(6,"Mentor");
+            stmtUser.executeUpdate();
+            PreparedStatement stmt=con.prepareStatement("insert into Mentors values(?,?,?,?,?,?,?,?,?)");
+            stmt.setString(2,user.getEmail());//1 specifies the first parameter in the query
+            stmt.setString(3,user.getPassword());
+            stmt.setString(4,user.getFirstName());
+            stmt.setString(6,user.getCity());
+            stmt.setString(1,user.getPhoneNr());
+            stmt.setString(7,user.getEducation());
+            stmt.setString(5,user.getLastName());
+            stmt.setString(8,((Mentor) user).getExperience());
+            stmt.setString(9,((Mentor) user).getSubject());
+            stmt.executeUpdate();
+            //s.executeQuery("INSERT INTO Mentors VALUES (user.getPhoneNr(), user.getEmail(), user.getPassword(), user.getFirstName(), user.getLastName(),user.getCity(),user.getEducation(), user.getExperience(), user.getSubject())");
+            //s.executeQuery("INSERT INTO Users VALUES (user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword, user.getPhoneNr(),Mentor)");
         }
 
     }
