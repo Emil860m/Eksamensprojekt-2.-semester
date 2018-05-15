@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Title</title>
+</head>
+<body>
+<h1>Opret mentor</h1>
+
+<form method="Post" th:action="@{/createMentor}">
+    <label>Email:</label>
+    <input type="text" th:field="${Mentor.email}" required="true" /></br></br>
+    <label>Adgangskode:</label>
+    <input type="text" th:field="${Mentor.password}" required="true" /></br></br>
+    <label>Telefon:</label>
+    <input type="text" th:field="${Mentor.phoneNr}" required="true" /></br></br>
+    <label>Fornavn:</label>
+    <input type="text" th:field="${Mentor.firstName}" required="true" /></br></br>
+    <label>Efternavn:</label>
+    <input type="text" th:field="${Mentor.lastName}" required="true" /></br></br>
+    <label>By:</label>
+    <input type="text" th:field="${Mentor.city}" required="true" /></br></br>
+    <label>Erfaring:</label>
+    <input type="text" th:field="${Mentor.subject}" required="true" /></br></br>
+    <label>Erfaring:</label>
+    <input type="text" th:field="${Mentor.experience}" required="true" /></br></br>
+    <label>Erfaring:</label>
+    <input type="text" th:field="${Mentor.education}" required="true" /></br></br>
+    <input type="submit" value="Send" />
+
+
+</form>
+
+</body>
+</html>

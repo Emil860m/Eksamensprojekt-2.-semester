@@ -47,19 +47,30 @@ public class HomeController {
 
         return "index";
     }
-@GetMapping("/createStudent")
-public String createStudent(Model model){
-    model.addAttribute("Student", new Student());
-    return "createStudent";
+    @GetMapping("/createStudent")
+        public String createStudent(Model model){
+        model.addAttribute("Student", new Student());
+        return "createStudent";
 
 }
 
-@PostMapping("/createStudent")
+    @PostMapping("/createStudent")
     public String createStudent(@ModelAttribute Student student) throws SQLException {
         Utility.saveUser(student);
-    return "redirect:/";
+        return "redirect:/";
+        }
+
+    @GetMapping("/createMentor")
+    public String createMentor(Model model){
+        model.addAttribute("Mentor", new Mentor());
+        return "createMentor";
+
     }
 
-
+    @PostMapping("/createMentor")
+    public String createMentor(@ModelAttribute Mentor mentor) throws SQLException {
+        Utility.saveUser(mentor);
+        return "redirect:/";
+    }
 
 }
