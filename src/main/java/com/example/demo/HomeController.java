@@ -5,8 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 @Controller
@@ -42,7 +44,7 @@ public class HomeController {
 
 
  */
-@GetMapping("/")
+    @GetMapping("/")
     public String index() {
 
         return "index";
@@ -72,5 +74,19 @@ public class HomeController {
         Utility.saveUser(mentor);
         return "redirect:/";
     }
+
+    @GetMapping("/deleteUser")
+    public String deleteUser(@RequestParam (value = "email") String email){
+        Utility.deleteUser(email);
+        return "userList";
+    }
+    @GetMapping("/userList")
+    public String userList(Model model){
+        ArrayList<User> uList = Utility.loadUserList();
+        model.addAttribute("uList", uList);
+        return "userList";
+    }
+
+
 
 }
