@@ -122,6 +122,10 @@ public class Utility {
         stmtUser.setString(1,inputEmail);
         stmtUser.executeUpdate();
     }
+
+    public static void editUser(User user) throws SQLException {
+        con = dbConn.getInstance().createConnection();
+    }
 }
 
 
