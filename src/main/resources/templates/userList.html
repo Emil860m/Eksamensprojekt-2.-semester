@@ -30,10 +30,14 @@
         </tr>
         <tr th:each="uList: ${uList}">
             <td></td>
-            <td th:text="${uList.firstName}"/>
+            <td th:text="${uList.firstName + ' ' + uList.lastName}"/>
             <td th:text="${uList.phoneNr}"/>
             <td th:text="${uList.type}"/>
             <td th:text="${uList.email}"/>
+            <td><a th:href="@{'/editUser?email='+${uList.email}}">
+                <button class="btn-ed btn">Edit</button>
+
+            </a>
             <td><a th:href="@{'/deleteUser?email='+${uList.email}}">
                 <button onclick="return confirm('Er du sikker?')" class="btn-ed btn">Slet</button>
 

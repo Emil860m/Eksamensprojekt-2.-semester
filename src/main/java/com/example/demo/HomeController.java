@@ -95,16 +95,16 @@ public class HomeController {
             return "editMentor";
         }
         if (u instanceof Student) {
-            model.addAttribute("Student", u);
+            model.addAttribute("student", u);
             return "editStudent";
         }
-            return "/redirect";
+            return "redirect:/";
     }
 
     @PostMapping("/editUser")
     public String editUser(@ModelAttribute User userEdit)throws Exception{
         Utility.editUser(userEdit);
-        return "/redirect";
+        return "redirect:/";
 
     }
 }

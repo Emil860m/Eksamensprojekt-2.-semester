@@ -126,15 +126,27 @@ public class Utility {
 
     public static User loadEditUser(String email) throws SQLException {
         con = dbConn.getInstance().createConnection();
-        Statement s = con.createStatement();
-        ResultSet rs = s.executeQuery("SELECT type FROM Users WHERE email = " + email);
+        ResultSet rs;
+        //Statement s = con.createStatement();
+        String selectSQL = "SELECT type FROM Users WHERE email = (?)";
+        PreparedStatement stmt=con.prepareStatement(selectSQL);
+        stmt.setString(1,email);
+        rs = stmt.executeQuery();
+        rs.next();
+        //System.out.print(rs.getString(1));
         if(rs.getString(1).toLowerCase().equals("student")) {
-            ResultSet rs2 = s.executeQuery("SELECT * FROM Students WHERE email = " + email);
+            PreparedStatement stmtStudent=con.prepareStatement("SELECT * FROM Students WHERE email = (?)");
+            stmtStudent.setString(1,email);
+            ResultSet rs2 = stmtStudent.executeQuery();
+            rs2.next();
                 Student k = new Student(rs2.getString(2),rs2.getString(1), rs2.getString(5), rs2.getString(3), rs2.getString(7), rs2.getString(4), rs2.getString(6));
                 return k;
         }
         if(rs.getString(1).toLowerCase().equals("mentor")){
-            ResultSet rs2 = s.executeQuery("SELECT * FROM Mentors WHERE email = " + email);
+            PreparedStatement stmtStudent=con.prepareStatement("SELECT * FROM Mentors WHERE email = (?)");
+            stmtStudent.setString(1,email);
+            ResultSet rs2 = stmtStudent.executeQuery();
+            rs2.next();
             Mentor m = new Mentor(rs2.getString(3),rs2.getString(2), rs2.getString(1), rs2.getString(4), rs2.getString(5), rs2.getString(6), rs2.getString(7), rs2.getString(8), rs2.getString(9));
             return m;
         }
