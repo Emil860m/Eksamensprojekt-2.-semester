@@ -87,6 +87,14 @@ public class HomeController {
         return "userList";
     }
 
+    @GetMapping("/editUser")
+    public String editUser(@RequestParam (value = "email") String email, Model model) throws SQLException{
+        model.addAttribute()
+        Utility.editUser(email);
+        return "userList";
+
+    }
+
 
 
 }
