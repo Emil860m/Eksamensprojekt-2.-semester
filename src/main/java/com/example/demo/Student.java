@@ -7,7 +7,9 @@ public class Student extends User {
     public Student() {}
 
     public Student(String password, String email, String phoneNr, String firstName, String lastName, String city, String education) {
-        super(password, email, phoneNr, firstName, lastName, city, education);
+        super(password, email, phoneNr, firstName, lastName, city, education, "Student");
+        this.city = city;
+        this.education = education;
 
     }
 

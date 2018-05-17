@@ -6,14 +6,13 @@ public class User {
     protected String lastName;
     protected String password;
     protected String phoneNr; // foreign key
-    protected String city;
-    protected String education;
+
     protected String type;
 
 
     public User(){
     }
-
+    // contruktor der bliver brugt af LoadUserList()
     public User(String email, String firstName, String lastName, String type, String phoneNr) {
         this.email = email;
         this.firstName = firstName;
@@ -21,11 +20,15 @@ public class User {
         this.type = type;
         this.phoneNr = phoneNr;
     }
-
-    public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String education) {
+    //construktor der bliver brugt af loadEditUser()
+    public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String education, String type) {
         this.password = password;                   // Slettet username da vi bare bruger mail der
         this.email = email;                         // Tilføjet fornavn og efternavn her da de går igen i alle klasser
-        this.phoneNr = phoneNr;                     // Og derfor bare kan nedarves
+        this.phoneNr = phoneNr;
+        this.firstName = firstName;
+        this.lastName = lastName;                   // Og derfor bare kan nedarves
+        this.type = type;
+
     }
 
     public String getType() {
@@ -36,21 +39,7 @@ public class User {
         this.type = type;
     }
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-
-    public void setEducation(String education) {
-        this.education = education;
-    }
 
     public String getEmail() {
         return email;

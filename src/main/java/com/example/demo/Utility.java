@@ -2,6 +2,7 @@ package com.example.demo;
 
 import exam.ps.dbConn;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -79,9 +80,9 @@ public class Utility {
             stmt.setString(1,user.getEmail());//1 specifies the first parameter in the query
             stmt.setString(2,user.getPassword());
             stmt.setString(3,user.getFirstName());
-            stmt.setString(4,user.getCity());
+            stmt.setString(4,((Student) user).getCity());
             stmt.setString(5,user.getPhoneNr());
-            stmt.setString(6,user.getEducation());
+            stmt.setString(6,((Student) user).getEducation());
             stmt.setString(7,user.getLastName());
             stmt.executeUpdate();
         }
@@ -98,9 +99,9 @@ public class Utility {
             stmt.setString(2,user.getEmail());//1 specifies the first parameter in the query
             stmt.setString(3,user.getPassword());
             stmt.setString(4,user.getFirstName());
-            stmt.setString(6,user.getCity());
+            stmt.setString(6,((Mentor) user).getCity());
             stmt.setString(1,user.getPhoneNr());
-            stmt.setString(7,user.getEducation());
+            stmt.setString(7,((Mentor) user).getEducation());
             stmt.setString(5,user.getLastName());
             stmt.setString(8,((Mentor) user).getExperience());
             stmt.setString(9,((Mentor) user).getSubject());
@@ -139,7 +140,8 @@ public class Utility {
             stmtStudent.setString(1,email);
             ResultSet rs2 = stmtStudent.executeQuery();
             rs2.next();
-                Student k = new Student(rs2.getString(2),rs2.getString(1), rs2.getString(5), rs2.getString(3), rs2.getString(7), rs2.getString(4), rs2.getString(6));
+                Student k = new Student(rs2.getString("password"),rs2.getString("email"), rs2.getString("telefon"), rs2.getString("fornavn"), rs2.getString("efternavn"), rs2.getString("Students.by"), rs2.getString("Students.uddannelse"));
+                //System.out.print(k.getFirstName() + k.getLastName()+ k.getEmail() + k.getPassword() + k.getCity() + k.getEducation()+ k.getPhoneNr());
                 return k;
         }
         if(rs.getString(1).toLowerCase().equals("mentor")){
@@ -153,17 +155,79 @@ public class Utility {
         return null;
     }
 
-
-    public static void editUser(User user) throws SQLException {
+    public static void editMentor(User user) throws SQLException {
         con = dbConn.getInstance().createConnection();
-        
+        PreparedStatement stmt = con.prepareStatement("UPDATE Users SET email = (?), fornavn = (?), efternavn = (?), password = (?), telefon = (?) WHERE email = (?)");
+        stmt.setString(1,user.getEmail());
+        stmt.setString(2,user.getFirstName());
+        stmt.setString(3,user.getLastName());
+        stmt.setString(4, user.getPassword());
+        stmt.setString(5, user.getPhoneNr());
+        stmt.setString(6,user.getEmail());
+        stmt.executeUpdate();
+
+        PreparedStatement stmtMentor = con.prepareStatement("UPDATE Mentors SET email = (?), password = (?), fornavn = (?), Mentors.by = (?), Mentors.telefon = (?), Mentors.education = (?), Mentors.efternavn = (?), Mentors.experience = (?), Mentors.subject = (?) WHERE email = (?)");
+        stmtMentor.setString(1, user.getEmail());
+        stmtMentor.setString(2, user.getPassword());
+        stmtMentor.setString(3, user.getFirstName());
+        stmtMentor.setString(4, ((Mentor) user).getCity());
+        stmtMentor.setString(5, user.getPhoneNr());
+        stmtMentor.setString(6, ((Mentor) user).getEducation());
+        stmtMentor.setString(7, user.getLastName());
+        stmtMentor.setString(8, ((Mentor) user).getExperience());
+        stmtMentor.setString(9, ((Mentor) user).getSubject());
+        stmtMentor.setString(10,user.getEmail());
+        stmtMentor.executeUpdate();
+    }
+
+    public static void editStudent(User user) throws SQLException {
+        con = dbConn.getInstance().createConnection();
+        PreparedStatement stmt = con.prepareStatement("UPDATE Users SET email = (?), fornavn = (?), efternavn = (?), password = (?), telefon = (?) WHERE email = (?)");
+        stmt.setString(1,user.getEmail());
+        stmt.setString(2,user.getFirstName());
+        stmt.setString(3,user.getLastName());
+        stmt.setString(4, user.getPassword());
+        stmt.setString(5, user.getPhoneNr());
+        stmt.setString(6,user.getEmail());
+        stmt.executeUpdate();
+/*
+        PreparedStatement test = con.prepareStatement("SELECT type FROM Users WHERE email = (?)");
+        test.setString(1,user.getEmail());
+        ResultSet rs = test.executeQuery();
+        rs.next();
+        if(rs.getString(1).toLowerCase().equals("student")) {*/
+            PreparedStatement stmtStudent = con.prepareStatement("UPDATE Students SET email = (?), password = (?), fornavn = (?), Students.by = (?), Students.telefon = (?), Students.uddannelse = (?), efternavn = (?) WHERE email = (?)");
+            stmtStudent.setString(1, user.getEmail());
+            stmtStudent.setString(2, user.getPassword());
+            stmtStudent.setString(3, user.getFirstName());
+            stmtStudent.setString(4, ((Student) user).getCity());
+            stmtStudent.setString(5, user.getPhoneNr());
+            stmtStudent.setString(6, ((Student) user).getEducation());
+            stmtStudent.setString(7, user.getLastName());
+            stmtStudent.setString(8, user.getEmail());
+            stmtStudent.executeUpdate();/*
+        }
+        if(rs.getString(1).toLowerCase().equals("mentor")) {
+            PreparedStatement stmtMentor = con.prepareStatement("UPDATE Mentors SET email = (?), password = (?), fornavn = (?), by = (?), telefon = (?), education = (?), efternavn = (?), experience = (?), Mentors.subject = (?)WHERE email = (?)");
+            stmtMentor.setString(1, user.getEmail());
+            stmtMentor.setString(2, user.getPassword());
+            stmtMentor.setString(3, user.getFirstName());
+            stmtMentor.setString(4, ((Mentor) user).getCity());
+            stmtMentor.setString(5, user.getPhoneNr());
+            stmtMentor.setString(6, ((Mentor) user).getEducation());
+            stmtMentor.setString(7, user.getLastName());
+            stmtMentor.setString(8, ((Mentor) user).getExperience());
+            stmtMentor.setString(9, ((Mentor) user).getSubject());
+            stmtMentor.setString(10,user.getEmail());
+            stmtMentor.executeUpdate();
+        }*/
     }
 
     public static ArrayList<User> loadUserList() throws SQLException {
         ArrayList<User> uList = new ArrayList();
         con = dbConn.getInstance().createConnection();
         Statement s = con.createStatement();
-        ResultSet rs = s.executeQuery("SELECT fornavn, efternavn, email, Type, telefon FROM Users");
+        ResultSet rs = s.executeQuery("SELECT fornavn, efternavn, email, Users.Type, telefon FROM Users");
         while(rs.next()){
             uList.add(new User(rs.getString(3), rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(5)));
         }

@@ -101,11 +101,18 @@ public class HomeController {
             return "redirect:/";
     }
 
-    @PostMapping("/editUser")
-    public String editUser(@ModelAttribute User userEdit)throws Exception{
-        Utility.editUser(userEdit);
+    @PostMapping("/editStudent")
+    public String editStudent(@ModelAttribute Student student)throws Exception{
+
+        Utility.editStudent(student);
         return "redirect:/";
 
+    }
+
+    @PostMapping("/editMentor")
+    public String editMentor(@ModelAttribute Mentor mentor) throws SQLException {
+        Utility.editMentor(mentor);
+        return "redirect:/";
     }
 }
 
