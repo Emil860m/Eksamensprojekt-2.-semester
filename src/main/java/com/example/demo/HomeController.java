@@ -88,10 +88,23 @@ public class HomeController {
     }
 
     @GetMapping("/editUser")
-    public String editUser(@RequestParam (value = "email") String email, Model model) throws SQLException{
-        model.addAttribute()
-        Utility.editUser(email);
-        return "userList";
+    public String editUser(@RequestParam (value = "email") String email, Model model) throws SQLException {
+        User u = Utility.loadEditUser(email);
+        if (u instanceof Mentor) {
+            model.addAttribute("Mentor", u);
+            return "editMentor";
+        }
+        if (u instanceof Student) {
+            model.addAttribute("Student", u);
+            return "editStudent";
+        }
+            return "/redirect";
+    }
+
+    @PostMapping("/editUser")
+    public String editUser(@ModelAttribute User userEdit)throws Exception{
+        Utility.editUser(userEdit);
+        return "/redirect";
 
     }
 }
