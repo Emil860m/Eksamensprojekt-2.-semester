@@ -124,6 +124,24 @@ public class Utility {
         stmtUser.executeUpdate();
     }
 
+    public static User loadEditUser(String email) throws SQLException {
+        con = dbConn.getInstance().createConnection();
+        Statement s = con.createStatement();
+        ResultSet rs = s.executeQuery("SELECT type FROM Users WHERE email = " + email);
+        if(rs.getString(1).toLowerCase().equals("student")) {
+            ResultSet rs2 = s.executeQuery("SELECT * FROM Students WHERE email = " + email);
+                Student k = new Student(rs2.getString(2),rs2.getString(1), rs2.getString(5), rs2.getString(3), rs2.getString(7), rs2.getString(4), rs2.getString(6));
+                return k;
+        }
+        if(rs.getString(1).toLowerCase().equals("mentor")){
+            ResultSet rs2 = s.executeQuery("SELECT * FROM Mentors WHERE email = " + email);
+            Mentor m = new Mentor(rs2.getString(3),rs2.getString(2), rs2.getString(1), rs2.getString(4), rs2.getString(5), rs2.getString(6), rs2.getString(7), rs2.getString(8), rs2.getString(9));
+            return m;
+        }
+        return null;
+    }
+
+
     public static void editUser(User user) throws SQLException {
         con = dbConn.getInstance().createConnection();
     }

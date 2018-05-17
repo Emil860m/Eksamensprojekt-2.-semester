@@ -22,7 +22,7 @@ public class User {
         this.phoneNr = phoneNr;
     }
 
-    public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String experience, String education) {
+    public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String education) {
         this.password = password;                   // Slettet username da vi bare bruger mail der
         this.email = email;                         // Tilføjet fornavn og efternavn her da de går igen i alle klasser
         this.phoneNr = phoneNr;                     // Og derfor bare kan nedarves

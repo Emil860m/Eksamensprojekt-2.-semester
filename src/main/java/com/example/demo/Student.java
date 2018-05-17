@@ -6,10 +6,9 @@ public class Student extends User {
 
     public Student() {}
 
-    public Student(String password, String email, String phoneNr, String firstName, String lastName, String city, String experience, String education, String city1, String education1) {
-        super(password, email, phoneNr, firstName, lastName, city, experience, education);
-        this.city = city1;
-        this.education = education1;
+    public Student(String password, String email, String phoneNr, String firstName, String lastName, String city, String education) {
+        super(password, email, phoneNr, firstName, lastName, city, education);
+
     }
 
     public String getCity() {
