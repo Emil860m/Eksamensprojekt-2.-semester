@@ -144,6 +144,7 @@ public class Utility {
 
     public static void editUser(User user) throws SQLException {
         con = dbConn.getInstance().createConnection();
+        
     }
 
     public static ArrayList<User> loadUserList() throws SQLException {
