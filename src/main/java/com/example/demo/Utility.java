@@ -45,7 +45,7 @@ public class Utility {
 
 
 
-    private static String login(String username, String password) throws SQLException {
+    public static String login(String username, String password) throws SQLException {
         con = dbConn.getInstance().createConnection();
         Statement s = null;
         s = con.createStatement();
