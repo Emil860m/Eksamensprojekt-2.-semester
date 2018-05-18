@@ -112,8 +112,16 @@ public class HomeController {
     @PostMapping("/editMentor")
     public String editMentor(@ModelAttribute Mentor mentor) throws SQLException {
         Utility.editMentor(mentor);
-        return "redirect:/";
+        return "redirect:/";  //HEJ
     }
+
+    @GetMapping("/login")
+    public String login(String email, String type)throws SQLException{
+        Utility.login(email, type);
+        return"login";
+
+    }
+
 }
 
 
