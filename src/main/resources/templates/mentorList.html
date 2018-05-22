@@ -17,10 +17,7 @@
 
     </br>
     </br>
-    <a href="createMentor">
-        <button>Opret mentor</button>
 
-    </a>
 
     <table width="100%" border="0", id="Medlemmer">
         <tr>
@@ -38,14 +35,7 @@
             <td th:text="${uList.phoneNr}"/>
             <td th:text="${uList.type}"/>
             <td th:text="${uList.email}"/>
-            <td><a th:href="@{'/editUser?email='+${uList.email}}">
-                <button class="btn-ed btn">Edit</button>
 
-            </a>
-            <td><a th:href="@{'/deleteUser?email='+${uList.email}}">
-                <button onclick="return confirm('Er du sikker?')" class="btn-ed btn">Slet</button>
-
-            </a>
 
             </td>
 

@@ -1,28 +1,18 @@
-
-<body class="align">
+<!-- taget fra www.w3.org-->
+<body class="align" xmlns:th="http://www.thymeleaf.org">
 
 <div class="grid">
     <link rel="stylesheet" type="text/css" href="stylesheetCss.css"/>
 
-    <form action="https://httpbin.org/post" method="POST" class="form login">
-
-        <div class="form__field">
-            <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Email</span></label>
-            <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
-        </div>
-
-        <div class="form__field">
-            <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Password</span></label>
-            <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
-        </div>
-
-        <div class="form__field">
-            <input type="submit" value="Sign In">
-        </div>
-
+    <form method="Post" th:action="@{/login}">
+        <label>Email:</label>
+        <input name="email" type="text" placeholder="email" required="true" /></br></br>
+        <label>Adgangskode:</label>
+        <input name="password" type="password" placeholder="password" required="true" /></br></br>
+        <input type="submit" value="Send" />
     </form>
 
-    <p class="text--center">Not a member? <a href="#">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+    <p class="text--center">Ikke medlem?<a href="createStudent">Tilmeld dig her</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
 
 </div>
 

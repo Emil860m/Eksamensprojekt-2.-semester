@@ -9,19 +9,19 @@
 
 <form method="Post" th:action="@{/editStudent}">
     <label>Email:</label>
-    <input type="text" th:field="${student.email}" required="true" /></br></br>
+    <input type="text" th:field="${Student.email}" required="true" /></br></br>
     <label>Adgangskode:</label>
-    <input type="password" th:field="${student.password}" required="false" /></br></br>
+    <input type="password" th:field="${Student.password}" required="false" /></br></br>
     <label>Telefon:</label>
-    <input type="text" th:field="${student.phoneNr}" required="true" /></br></br>
+    <input type="text" th:field="${Student.phoneNr}" required="true" /></br></br>
     <label>Fornavn:</label>
-    <input type="text" th:field="${student.firstName}" required="true" /></br></br>
+    <input type="text" th:field="${Student.firstName}" required="true" /></br></br>
     <label>Efternavn:</label>
-    <input type="text" th:field="${student.lastName}" required="true" /></br></br>
+    <input type="text" th:field="${Student.lastName}" required="true" /></br></br>
     <label>By:</label>
-    <input type="text" th:field="${student.city}" required="true" /></br></br>
+    <input type="text" th:field="${Student.city}" required="true" /></br></br>
     <label>Erfaring:</label>
-    <input type="text" th:field="${student.education}" required="true" /></br></br>
+    <input type="text" th:field="${Student.education}" required="true" /></br></br>
     <input type="submit" value="Send" />
 
 </form>

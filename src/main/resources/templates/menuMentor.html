@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html>
 <head>
     <title>Menu</title>
     <link rel="stylesheet" type="text/css" href="MenuCss.css"/>
@@ -10,12 +10,9 @@
     <h1>Eduvation</h1>
     <h2>Menu</h2>
     </br>
-    <!--<p th:text="${}"/>-->
     <ul class="menu">
-        <li><a href="studentList">Se mentorer</a></li>
-        <a th:href="editStudent">
-            <button class="btn-ed btn">Edit</button>
-        </a>
+        <li><a href="mentorList">Se brugere</a></li>
+        <li><a href="editMentor">Rediger oplysninger</a></li>
         <li><a href="logOut">Log ud</a></li>
     </ul>
 </header>

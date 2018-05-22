@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Liste af mentorer</title>
+    <link rel="stylesheet" type="text/css" href="stylesheetCss.css"/>
+</head>
+<body>
+<header>
+    <h1>Eduvation</h1>
+    <h2>Mentor</h2>
+
+
+
+    <!--<a class="btn" href="create">Link</a>-->
+
+    </br>
+    </br>
+
+
+    <table width="100%" border="0", id="Medlemmer">
+        <tr>
+            <th width="1%"></th>
+            <th width="4%">Navn</th>
+            <th width="2%">Telefon</th>
+            <th width="3%">Medlemstype</th>
+            <th width="5%">Email</th>
+            <th width="5%">By</th>
+            <th width="5%">Uddannelse</th>
+            <th width="5%">Erfaring</th>
+            <th width="5%">Fag</th>
+
+            <th width="2%"></th>
+        </tr>
+        <tr th:each="mList: ${mList}">
+            <td></td>
+            <td th:text="${mList.firstName + ' ' + mList.lastName}"/>
+            <td th:text="${mList.phoneNr}"/>
+            <td th:text="${mList.type}"/>
+            <td th:text="${mList.email}"/>
+            <td th:text="${mList.city}"/>
+            <td th:text="${mList.education}"/>
+            <td th:text="${mList.experience}"/>
+            <td th:text="${mList.subject}"/>
+
+
+        </tr>
+
+    </table>
+
+    </ul>
+</header>
+</body>
+</html>

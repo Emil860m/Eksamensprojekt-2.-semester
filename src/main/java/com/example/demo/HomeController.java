@@ -14,6 +14,7 @@ import java.util.ArrayList;
 @Controller
 public class HomeController {
 
+    String email = "";
 
 /*  Tilføjer bare skelettet til Menu forsiden for både Mentor og Student
     @GetMapping("/createTime")  - KUN MENTOR
@@ -47,7 +48,7 @@ public class HomeController {
     @GetMapping("/")
     public String index() {
 
-        return "index";
+        return "login";
     }
     @GetMapping("/createStudent")
         public String createStudent(Model model){
@@ -115,11 +116,68 @@ public class HomeController {
         return "redirect:/";  //HEJ
     }
 
-    @GetMapping("/login")
-    public String login(String email, String type)throws SQLException{
-        Utility.login(email, type);
+    @GetMapping("/menuStudent")
+    public String menuStudent(){
+
+        return "menuStudent";
+    }
+
+    @GetMapping("/menuMentor")
+    public String menuMentor(){
+        return "menuMentor";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam (value = "email") String email, @RequestParam(value = "password") String password, Model model)throws SQLException{
+        String [] login = Utility.login(email, password);
+        this.email = login[0];
+        System.out.print(login[1]);
+
+        if(login[1].equals("student")){
+            return("menuStudent");
+        }
+        if(login[1].equals("mentor")){
+            return("menuMentor");
+        }
+        if(login[1].equals("admin")){
+            return("userList");
+        }
         return"login";
 
+    }
+
+    @GetMapping("/studentList")
+    public String studentList(Model model) throws SQLException {
+        ArrayList<Mentor> mList = Utility.loadMentorList();
+        model.addAttribute("mList", mList);
+        return "studentList";
+    }
+
+    @GetMapping("/mentorList")
+    public String mentorList(Model model) throws SQLException {
+        ArrayList<User> uList = Utility.loadUserList();
+        model.addAttribute("uList", uList);
+        return "mentorList";
+    }
+
+    @GetMapping("/editStudent")
+    public String editStudent(Model model) throws SQLException {
+        User u = Utility.loadEditUser("student@email.com");
+        model.addAttribute("Student", u);
+        return "editStudent";
+    }
+
+    @GetMapping("/editMentor")
+    public String editMentor(Model model) throws SQLException {
+        User u = Utility.loadEditUser(email);
+        model.addAttribute("mentor", u);
+        return "editMentor";
+    }
+
+    @GetMapping("/logOut")
+    public String logOut(){
+        email="";
+        return "login";
     }
 
 }

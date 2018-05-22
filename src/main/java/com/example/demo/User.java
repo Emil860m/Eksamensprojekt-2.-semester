@@ -12,7 +12,7 @@ public class User {
 
     public User(){
     }
-    // contruktor der bliver brugt af LoadUserList()
+    // contruktor der bliver brugt af LoadUserList  ()
     public User(String email, String firstName, String lastName, String type, String phoneNr) {
         this.email = email;
         this.firstName = firstName;
