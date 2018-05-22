@@ -3,7 +3,7 @@ package exam.ps;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class dbConn {
+public class dbConn {  // Lavet med inspiration fra Cay og hjælp fra Jonas
 
 
     static dbConn instance = new dbConn();
