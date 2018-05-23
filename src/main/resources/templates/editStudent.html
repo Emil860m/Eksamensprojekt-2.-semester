@@ -2,12 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Title</title>
+    <title>Rediger oplysninger</title>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
-<h1>Rediger studerende</h1>
+<div class="login-page">
+    <div class="form">
 
-<form method="Post" th:action="@{/editStudent}">
+
+        <img src="logo.PNG" style="width:200px;height:100px;"/>
+
+<form method="Post" th:action="@{/editStudent}" class="login-form">
+    <h1>Rediger studerende</h1>
     <label>Email:</label>
     <input type="text" th:field="${Student.email}" required="true" /></br></br>
     <label>Adgangskode:</label>
@@ -20,11 +26,12 @@
     <input type="text" th:field="${Student.lastName}" required="true" /></br></br>
     <label>By:</label>
     <input type="text" th:field="${Student.city}" required="true" /></br></br>
-    <label>Erfaring:</label>
+    <label>Uddannelse:</label>
     <input type="text" th:field="${Student.education}" required="true" /></br></br>
-    <input type="submit" value="Send" />
+    <input style="background: #b2b2b2" type="submit" value="Send" />
 
 </form>
-
+    </div>
+</div>
 </body>
 </html>

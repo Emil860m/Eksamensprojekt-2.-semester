@@ -131,8 +131,6 @@ public class HomeController {
     public String login(@RequestParam (value = "email") String email, @RequestParam(value = "password") String password, Model model)throws SQLException{
         String [] login = Utility.login(email, password);
         this.email = login[0];
-        System.out.print(login[1]);
-
         if(login[1].equals("student")){
             return("menuStudent");
         }
@@ -143,7 +141,6 @@ public class HomeController {
             return("userList");
         }
         return"login";
-
     }
 
     @GetMapping("/studentList")
@@ -162,7 +159,7 @@ public class HomeController {
 
     @GetMapping("/editStudent")
     public String editStudent(Model model) throws SQLException {
-        User u = Utility.loadEditUser("student@email.com");
+        User u = Utility.loadEditUser(email);
         model.addAttribute("Student", u);
         return "editStudent";
     }

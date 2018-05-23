@@ -2,12 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Title</title>
+    <title>Opret mentor</title>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
+<div class="login-page">
+    <div class="form">
 <h1>Opret mentor</h1>
 
-<form method="Post" th:action="@{/createMentor}">
+<form method="Post" th:action="@{/createMentor}" class="login-form">
     <label>Email:</label>
     <input type="text" th:field="${Mentor.email}" required="true" /></br></br>
     <label>Adgangskode:</label>
@@ -26,7 +29,7 @@
     <input type="text" th:field="${Mentor.experience}" required="true" /></br></br>
     <label>Uddannelse:</label>
     <input type="text" th:field="${Mentor.education}" required="true" /></br></br>
-    <input type="submit" value="Send" />
+    <input style="background: #b2b2b2" type="submit" value="Send" />
 
 
 </form>

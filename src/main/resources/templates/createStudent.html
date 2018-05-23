@@ -2,12 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
-    <title>Title</title>
+    <title>Opret studerende</title>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
+<div class="login-page">
+    <div class="form">
 <h1>Opret studerende</h1>
 
-<form method="Post" th:action="@{/createStudent}">
+<form method="Post" th:action="@{/createStudent}" class="login-form">
     <label>Email:</label>
     <input type="text" th:field="${Student.email}" required="true" /></br></br>
     <label>Adgangskode:</label>
@@ -20,9 +23,9 @@
     <input type="text" th:field="${Student.lastName}" required="true" /></br></br>
     <label>By:</label>
     <input type="text" th:field="${Student.city}" required="true" /></br></br>
-    <label>Erfaring:</label>
+    <label>Uddannelse:</label>
     <input type="text" th:field="${Student.education}" required="true" /></br></br>
-    <input type="submit" value="Send" />
+    <input style="background: #b2b2b2" type="submit" value="Send" />
 
 </form>
 

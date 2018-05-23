@@ -10,8 +10,6 @@ import java.util.Scanner;
 
 public class Utility {
 
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DATABASE_URL = "jdbc:mysql://google/ap?cloudSqlInstance=fiery-nimbus-203407:europe-west1:myinstance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=yzt42rmt&useSSL=false";
     static Connection con;
 
 
@@ -30,10 +28,7 @@ public class Utility {
         Statement s = null;
         s = con.createStatement();
         ResultSet rs = s.executeQuery("SELECT email, password, Users.type FROM ap.Users");
-
-        //System.out.println(rs.getString(1));
         while (rs.next()) {
-            System.out.println(rs.getString("email") + " " + rs.getString("password"));
             if (username.toLowerCase().equals(rs.getString("email").toLowerCase()) && password.toLowerCase().equals(rs.getString("password").toLowerCase())) {
                 login[0] = rs.getString("email").toLowerCase();
                 login[1] = rs.getString("type").toLowerCase();

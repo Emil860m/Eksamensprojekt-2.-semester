@@ -4,11 +4,11 @@
 <head>
 
     <title>Liste af mentorer</title>
-    <link rel="stylesheet" type="text/css" href="stylesheetCss.css"/>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
-<header>
-    <h1>Eduvation</h1>
+
+<img src="logo dark blue.PNG" style="width:300px;height:150px;float:right"/>
     <h2>Mentor</h2>
 
 
@@ -19,22 +19,22 @@
     </br>
 
 
-    <table width="100%" border="0", id="Medlemmer">
+    <table width="100%", id="list">
         <tr>
-            <th width="1%"></th>
-            <th width="4%">Navn</th>
-            <th width="2%">Telefon</th>
-            <th width="3%">Medlemstype</th>
-            <th width="5%">Email</th>
-            <th width="5%">By</th>
-            <th width="5%">Uddannelse</th>
-            <th width="5%">Erfaring</th>
-            <th width="5%">Fag</th>
 
-            <th width="2%"></th>
+            <th width="4%"> Navn</th>
+            <th width="2%"> Telefon</th>
+            <th width="3%"> Medlemstype</th>
+            <th width="5%"> Email</th>
+            <th width="5%"> By</th>
+            <th width="5%"> Uddannelse</th>
+            <th width="5%"> Erfaring</th>
+            <th width="5%"> Fag</th>
+
+
         </tr>
         <tr th:each="mList: ${mList}">
-            <td></td>
+
             <td th:text="${mList.firstName + ' ' + mList.lastName}"/>
             <td th:text="${mList.phoneNr}"/>
             <td th:text="${mList.type}"/>
@@ -50,6 +50,6 @@
     </table>
 
     </ul>
-</header>
+
 </body>
 </html>
