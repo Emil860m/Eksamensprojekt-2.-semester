@@ -4,11 +4,11 @@
 <head>
 
     <title>Liste over medlemmer</title>
-    <link rel="stylesheet" type="text/css" href="stylesheetCss.css"/>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
 <header>
-    <h1>Eduvation</h1>
+    <img src="logo dark blue.PNG" style="width:300px;height:150px;float:right"/>
     <h2>Medlemmer</h2>
 
 
@@ -19,25 +19,25 @@
     </br>
 
 
-    <table width="100%" border="0", id="Medlemmer">
+    <table width="100%" border="0", id="list">
         <tr>
-            <th width="1%"></th>
+
             <th width="4%">Navn</th>
             <th width="2%">Telefon</th>
             <th width="3%">Medlemstype</th>
             <th width="5%">Email</th>
 
-            <th width="2%"></th>
+
         </tr>
         <tr th:each="uList: ${uList}">
-            <td></td>
+
             <td th:text="${uList.firstName + ' ' + uList.lastName}"/>
             <td th:text="${uList.phoneNr}"/>
             <td th:text="${uList.type}"/>
             <td th:text="${uList.email}"/>
 
 
-            </td>
+
 
         </tr>
 

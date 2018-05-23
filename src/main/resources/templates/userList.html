@@ -4,11 +4,11 @@
 <head>
 
     <title>Liste over brugere</title>
-    <link rel="stylesheet" type="text/css" href="stylesheetCss.css"/>
+    <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
 <header>
-    <h1>Eduvation</h1>
+    <img src="logo dark blue.PNG" style="width:300px;height:150px;float:right"/>
     <h2>Medlemmer</h2>
 
 
@@ -18,32 +18,33 @@
     </br>
     </br>
     <a href="createMentor">
-        <button>Opret mentor</button>
+        <button class="button2">Opret mentor</button>
 
     </a>
 
-    <table width="100%" border="0", id="Medlemmer">
+    <table width="100%" border="0", id="list">
         <tr>
-            <th width="1%"></th>
+
             <th width="4%">Navn</th>
             <th width="2%">Telefon</th>
             <th width="3%">Medlemstype</th>
             <th width="5%">Email</th>
 
-            <th width="2%"></th>
+            <th width="1%"></th>
+            <th width="1%"></th>
         </tr>
         <tr th:each="uList: ${uList}">
-            <td></td>
+
             <td th:text="${uList.firstName + ' ' + uList.lastName}"/>
             <td th:text="${uList.phoneNr}"/>
             <td th:text="${uList.type}"/>
             <td th:text="${uList.email}"/>
             <td><a th:href="@{'/editUser?email='+${uList.email}}">
-                <button class="btn-ed btn">Edit</button>
+                <button class="button1">Edit</button>
 
             </a>
             <td><a th:href="@{'/deleteUser?email='+${uList.email}}">
-                <button onclick="return confirm('Er du sikker?')" class="btn-ed btn">Slet</button>
+                <button onclick="return confirm('Er du sikker?')" class="button1">Slet</button>
 
             </a>
 

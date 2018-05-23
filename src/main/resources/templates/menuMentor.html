@@ -1,19 +1,20 @@
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title>Menu</title>
     <link rel="stylesheet" type="text/css" href="css.css"/>
 </head>
 <body>
 <header>
-    <h1>Eduvation</h1>
+    <img src="logo dark blue.PNG" style="width:300px;height:150px;float:right"/>
     <h2>Menu</h2>
     </br>
     <ul class="menu">
-        <li><a href="mentorList">Se brugere</a></li>
-        <li><a href="editMentor">Rediger oplysninger</a></li>
-        <li><a href="logOut">Log ud</a></li>
+        <a th:href="mentorList"><button class="button2">Se brugere</button></a><br/><br/>
+        <a th:href="editMentor"><button class="button2">Rediger oplysninger</button></a><br/><br/>
+        <a th:href="logOut"><button class="button2">Log ud</button></a><br/><br/>
+
     </ul>
 </header>
 </body>

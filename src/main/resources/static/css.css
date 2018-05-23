@@ -29,7 +29,7 @@ body {
     font-size: 14px;
 }
 #list {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: "Roboto", sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -49,4 +49,19 @@ body {
     color: white;
 }
 
-
+button{
+    background-color: #B2B2B2;
+    border: none;
+    color: white;
+    text-align: center;
+}
+.button1{
+    padding: 5px 10px;
+}
+.button2{
+    padding: 15px 32px;
+}
+h2{
+    font-family: "Roboto", sans-serif;
+    padding: 10px 40px;
+}

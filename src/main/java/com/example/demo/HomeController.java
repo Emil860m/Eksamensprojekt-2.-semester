@@ -167,7 +167,7 @@ public class HomeController {
     @GetMapping("/editMentor")
     public String editMentor(Model model) throws SQLException {
         User u = Utility.loadEditUser(email);
-        model.addAttribute("mentor", u);
+        model.addAttribute("Mentor", u);
         return "editMentor";
     }
 
