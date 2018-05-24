@@ -1,7 +1,7 @@
 package com.example.demo;
 
 public class Student extends User {
-    protected String city;                     // Slettet fornavn og efternavn da jeg tænker vi bare nedarver dem fra User
+    protected String city;
     protected String education;
 
     public Student() {}

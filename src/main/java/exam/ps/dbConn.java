@@ -10,10 +10,6 @@ public class dbConn {  // Lavet med inspiration fra Cay og hjælp fra Jonas
     static final String DATABASE_URL = "jdbc:mysql://35.195.34.200:3306/ap?useSSL=false";
     static Connection con;
 
-    /**
-     * we want to use JDBC protocol, mysql DBMS , the local host with
-     * the database ap
-     */
 
     public Connection createConnection() {
         con = null;

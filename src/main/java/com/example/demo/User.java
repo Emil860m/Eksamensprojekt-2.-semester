@@ -22,11 +22,11 @@ public class User {
     }
     //construktor der bliver brugt af loadEditUser()
     public User(String password, String email, String phoneNr, String firstName, String lastName, String city, String education, String type) {
-        this.password = password;                   // Slettet username da vi bare bruger mail der
-        this.email = email;                         // Tilføjet fornavn og efternavn her da de går igen i alle klasser
+        this.password = password;
+        this.email = email;
         this.phoneNr = phoneNr;
         this.firstName = firstName;
-        this.lastName = lastName;                   // Og derfor bare kan nedarves
+        this.lastName = lastName;
         this.type = type;
 
     }

@@ -1,11 +1,9 @@
 package com.example.demo;
 
 import exam.ps.dbConn;
-
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 
 public class Utility {
@@ -103,21 +101,18 @@ public class Utility {
     public static User loadEditUser(String email) throws SQLException {
         con = dbConn.getInstance().createConnection();
         ResultSet rs;
-        //Statement s = con.createStatement();
         String selectSQL = "SELECT type FROM Users WHERE email = ?";
         PreparedStatement stmt = con.prepareStatement(selectSQL);
         stmt.setString(1, email);
         rs = stmt.executeQuery();
 
         while (rs.next()) {
-            //System.out.print(rs.getString(1));
             if (rs.getString("Type").equals("Student")) {
                 PreparedStatement stmtStudent = con.prepareStatement("SELECT * FROM Students WHERE email = (?)");
                 stmtStudent.setString(1, email);
                 ResultSet rs2 = stmtStudent.executeQuery();
                 rs2.next();
                 Student k = new Student(rs2.getString("password"), rs2.getString("email"), rs2.getString("telefon"), rs2.getString("fornavn"), rs2.getString("efternavn"), rs2.getString("Students.by"), rs2.getString("Students.uddannelse"));
-                //System.out.print(k.getFirstName() + k.getLastName()+ k.getEmail() + k.getPassword() + k.getCity() + k.getEducation()+ k.getPhoneNr());
                 return k;
             }
             if (rs.getString(1).toLowerCase().equals("mentor")) {
@@ -142,7 +137,6 @@ public class Utility {
         stmt.setString(5, user.getPhoneNr());
         stmt.setString(6, user.getEmail());
         stmt.executeUpdate();
-
         PreparedStatement stmtMentor = con.prepareStatement("UPDATE Mentors SET email = (?), password = (?), fornavn = (?), Mentors.by = (?), Mentors.telefon = (?), Mentors.education = (?), Mentors.efternavn = (?), Mentors.experience = (?), Mentors.subject = (?) WHERE email = (?)");
         stmtMentor.setString(1, user.getEmail());
         stmtMentor.setString(2, user.getPassword());
@@ -167,12 +161,6 @@ public class Utility {
         stmt.setString(5, user.getPhoneNr());
         stmt.setString(6, user.getEmail());
         stmt.executeUpdate();
-/*
-        PreparedStatement test = con.prepareStatement("SELECT type FROM Users WHERE email = (?)");
-        test.setString(1,user.getEmail());
-        ResultSet rs = test.executeQuery();
-        rs.next();
-        if(rs.getString(1).toLowerCase().equals("student")) {*/
         PreparedStatement stmtStudent = con.prepareStatement("UPDATE Students SET email = (?), password = (?), fornavn = (?), Students.by = (?), Students.telefon = (?), Students.uddannelse = (?), efternavn = (?) WHERE email = (?)");
         stmtStudent.setString(1, user.getEmail());
         stmtStudent.setString(2, user.getPassword());
@@ -182,22 +170,7 @@ public class Utility {
         stmtStudent.setString(6, ((Student) user).getEducation());
         stmtStudent.setString(7, user.getLastName());
         stmtStudent.setString(8, user.getEmail());
-        stmtStudent.executeUpdate();/*
-        }
-        if(rs.getString(1).toLowerCase().equals("mentor")) {
-            PreparedStatement stmtMentor = con.prepareStatement("UPDATE Mentors SET email = (?), password = (?), fornavn = (?), by = (?), telefon = (?), education = (?), efternavn = (?), experience = (?), Mentors.subject = (?)WHERE email = (?)");
-            stmtMentor.setString(1, user.getEmail());
-            stmtMentor.setString(2, user.getPassword());
-            stmtMentor.setString(3, user.getFirstName());
-            stmtMentor.setString(4, ((Mentor) user).getCity());
-            stmtMentor.setString(5, user.getPhoneNr());
-            stmtMentor.setString(6, ((Mentor) user).getEducation());
-            stmtMentor.setString(7, user.getLastName());
-            stmtMentor.setString(8, ((Mentor) user).getExperience());
-            stmtMentor.setString(9, ((Mentor) user).getSubject());
-            stmtMentor.setString(10,user.getEmail());
-            stmtMentor.executeUpdate();
-        }*/
+        stmtStudent.executeUpdate();
     }
 
     public static ArrayList<User> loadUserList() throws SQLException {
