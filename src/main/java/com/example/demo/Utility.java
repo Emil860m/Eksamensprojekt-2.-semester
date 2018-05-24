@@ -10,14 +10,7 @@ public class Utility {
 
     static Connection con;
 
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        try {
-            loadUserList();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    
 
 
     public static String[] login(String username, String password) throws SQLException {
